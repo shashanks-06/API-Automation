@@ -1,0 +1,709 @@
+{
+	"info": {
+		"_postman_id": "28185fee-9a75-4530-a25a-caeb0aa806ad",
+		"name": "Restful-Booker_Sanity_Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32840864",
+		"_collection_link": "https://shashank-team-3132.postman.co/workspace/Shashank-Team-Workspace~aa837faf-e860-4a1d-8991-544a3dce0340/collection/32840864-28185fee-9a75-4530-a25a-caeb0aa806ad?action=share&source=collection_link&creator=32840864"
+	},
+	"item": [
+		{
+			"name": "Ping Request #1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var chai = require('chai');\r",
+							"var expect = require('chai').expect;\r",
+							"\r",
+							"pm.test(\"Verify that foo is a String\", function(){\r",
+							"    var foo = \"Shashank\";\r",
+							"    expect(foo).to.be.a('String');\r",
+							"\r",
+							"    pm.response.to.have.status(201);\r",
+							"\r",
+							"    var something = 'anything';\r",
+							"    expect(something).to.equal('anything');\r",
+							"\r",
+							"    pm.expect(something).to.exist;\r",
+							"    pm.expect(true).to.be.true\r",
+							"\r",
+							"    pm.response.to.have.jsonBody;\r",
+							"    pm.response.to.withBody;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// pm.test(\"TC#1- Status code is 201\", function () {\r",
+							"//     pm.response.to.have.status(201);\r",
+							"// });\r",
+							"\r",
+							"\r",
+							"\r",
+							"// pm.test(\"TC#3 - Content-Type is present\", function () {\r",
+							"//     pm.response.to.have.header(\"Content-Type\");\r",
+							"// });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{url}}/ping",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Booking IDs #2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"TC#1- Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#2 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bookingid\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url}}/booking",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Booking #3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let myName = pm.globals.get(\"global_name\");\r",
+							"console.log(myName);\r",
+							"\r",
+							"pm.globals.set(\"global_sName\", \"Surjekar\");     // To set global variable by JS code\r",
+							"let mySname = pm.globals.get(\"global_sName\");\r",
+							"console.log(mySname);\r",
+							"\r",
+							"pm.test(\"TC#1- Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"firstname\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"lastname\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"totalprice\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"depositpaid\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bookingdates\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"checkin\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"checkout\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"additionalneeds\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Set the Environment Variable\", function(){\r",
+							"    var response = pm.response.json();\r",
+							"    var  bookingId = response.bookingid;\r",
+							"    var  checkin = response.booking.bookingdates.checkin;\r",
+							"    pm.environment.set(\"e_bookingId\", bookingId);\r",
+							"    console.log(bookingId +\" | \"+ checkin);\r",
+							"    console.log(`${bookingId} | ${checkin}`);\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"Shashank\",\r\n    \"lastname\" : \"Surjekar\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url}}/booking",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Booking #4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"TC#1- Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"firstname\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"lastname\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"totalprice\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"depositpaid\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bookingdates\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"checkin\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"checkout\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url}}/booking/{{e_bookingId}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"{{e_bookingId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Token Request #5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"TC#1- Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#2 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"token\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"TC#4 - Token should exist\", function () {\r",
+							"    var response = pm.response.json();\r",
+							"    var token = response.token;\r",
+							"    pm.expect(token).to.be.exist;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Global Variables\" , function(){\r",
+							"    console.log(pm.globals.get(\"global_name\"));\r",
+							"    console.log(pm.globals.get(\"global_sName\"));\r",
+							"});\r",
+							"pm.test(\"Collection Variables\", function(){\r",
+							"    console.log(pm.collectionVariables.get(\"c_name\"))\r",
+							"})\r",
+							"pm.test(\"Environment Variables\", function(){\r",
+							"    console.log(pm.environment.get(\"url\"))\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Set the Global Variable of Token\", function(){\r",
+							"    var response = pm.response.json();\r",
+							"    var token = response.token;\r",
+							"    pm.environment.set(\"e_token\", token);\r",
+							"    console.log(pm.globals.get(\"e_token\"));\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url}}/auth",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Booking #6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"TC#1- Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"firstname\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"lastname\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"totalprice\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"depositpaid\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bookingdates\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"checkin\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"checkout\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"additionalneeds\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{e_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"Shashank\",\r\n    \"lastname\" : \"Surjekar\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : false,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2020-01-01\",\r\n        \"checkout\" : \"2023-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Dinner\"\r\n}"
+				},
+				"url": {
+					"raw": "https://{{url}}/booking/{{e_bookingId}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"{{e_bookingId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partial Update Booking #7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"TC#1- Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"firstname\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"lastname\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"totalprice\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"depositpaid\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"bookingdates\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"checkin\");\r",
+							"});\r",
+							"pm.test(\"TC#3 - Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"checkout\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Cookie",
+						"value": "token={{e_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"{{e_firstname}}\",\r\n    \"lastname\" : \"Surjekar\",\r\n    \"totalprice\": 611\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url}}/booking/{{e_bookingId}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"{{e_bookingId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Booking #8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"TC#1- Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Created\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "token=625f2c5069380ae"
+					}
+				],
+				"url": {
+					"raw": "https://{{url}}/booking/{{e_bookingId}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"{{e_bookingId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check bookingId is deleted #9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"TC#1- Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"TC#3 - Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{url}}/booking/{{e_bookingId}}",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"{{e_bookingId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "c_name",
+			"value": "Shak",
+			"type": "string"
+		}
+	]
+}
